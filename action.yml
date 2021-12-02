@@ -1,4 +1,4 @@
-name: Get Tag
+name: Extract Tag
 description: Extract tag name from pushed tag
 branding:
   icon: tag
