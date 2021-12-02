@@ -1,0 +1,16 @@
+name: Get Tag
+description: Extract tag name from pushed tag
+branding:
+  icon: tag
+  color: green
+inputs:
+  without_prefix_v:
+    required: false
+    default: false
+    description: Remove prefix `v` from tag
+outputs:
+  tag:
+    description: Git Tag Name
+runs:
+  using: node12
+  main: main.js
