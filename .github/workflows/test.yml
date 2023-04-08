@@ -16,7 +16,7 @@ jobs:
 
     - name: Test dev
       run: |
-        test "v1.0.0" = "${{GIT_TAG_NAME}}"
+        test "v1.0.0" = "$GIT_TAG_NAME"
 
     - name: Run dev without prefix v
       id: tag_dev_without_prefix_v
@@ -24,7 +24,7 @@ jobs:
     
     - name: Test dev without prefix v
       run: |
-        test "1.0.0" = "${{GIT_TAG_NO_V_NAME}}"
+        test "1.0.0" = "$GIT_TAG_NO_V_NAME"
     
     - name: Run prod
       id: tag_prod
@@ -34,4 +34,4 @@ jobs:
     - name: Test prod
       if: startsWith(github.ref, 'refs/tags') == true
       run: |
-        test -n "${{GIT_TAG_NAME}}"
+        test -n "$GIT_TAG_NAME"
