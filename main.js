@@ -26,9 +26,10 @@ async function main() {
     core.info(`tag=${tag}`)
     
     core.exportVariable('GIT_TAG_NAME', tag)
+    core.setOutput("tag", tag);
 
-    core.info("Tag exported to 'GIT_TAG_NAME'");
-    return tag;
+    core.info("Tag exported to 'GIT_TAG_NAME'")
+    return tag
   }
   catch (error) {
     core.setFailed(error);
