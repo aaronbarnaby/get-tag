@@ -24,7 +24,7 @@ jobs:
     
     - name: Test dev without prefix v
       run: |
-        test "1.0.0" = "${{steps.tag_dev.outputs.tag}}"
+        test "1.0.0" = "${{steps.tag_dev_without_prefix_v.outputs.tag}}"
     
     - name: Run prod
       id: tag_prod

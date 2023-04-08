@@ -4,8 +4,7 @@ async function main() {
   try {
     const ref = process.env.GITHUB_REF
     const remove_prefix = process.env.INPUT_WITHOUT_PREFIX_V
-    const outputEnvName = process.env.INPUT_OUTPUT_ENV_NAME ?? 'GIT_TAG_NAME';
-
+    
     if (!ref)
     {
       throw "GITHUB_REF is not defined"
