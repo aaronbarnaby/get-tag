@@ -12,5 +12,5 @@ outputs:
   tag:
     description: Git Tag Name
 runs:
-  using: node12
+  using: node16
   main: main.js
