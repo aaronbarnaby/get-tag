@@ -11,7 +11,6 @@ inputs:
 outputs:
   tag:
     description: Git Tag Name
-    value: $GIT_TAG_NAME
 runs:
   using: node16
   main: main.js
