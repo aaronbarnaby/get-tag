@@ -4,7 +4,7 @@ async function main() {
   try {
     const ref = process.env.GITHUB_REF
     const remove_prefix = process.env.INPUT_WITHOUT_PREFIX_V
-    const outputEnvName = process.env.OUTPUT_ENV_NAME ?? 'GIT_TAG_NAME';
+    const outputEnvName = process.env.INPUT_OUTPUT_ENV_NAME ?? 'GIT_TAG_NAME';
 
     if (!ref)
     {
@@ -25,9 +25,9 @@ async function main() {
     core.info(`ref=${ref}`)
     core.info(`tag=${tag}`)
     
-    core.exportVariable(outputEnvName, tag)
+    core.exportVariable('GIT_TAG_NAME', tag)
 
-    core.info("Tag exported to '" + outputEnvName + "'")
+    core.info("Tag exported to 'GIT_TAG_NAME'")
   }
   catch (error) {
     core.setFailed(error);

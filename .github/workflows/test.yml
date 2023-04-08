@@ -20,11 +20,11 @@ jobs:
 
     - name: Run dev without prefix v
       id: tag_dev_without_prefix_v
-      run: GITHUB_REF=refs/tags/v1.0.0 INPUT_WITHOUT_PREFIX_V=true OUTPUT_ENV_NAME=GIT_TAG_NO_V_NAME node main.js
+      run: GITHUB_REF=refs/tags/v1.0.0 INPUT_WITHOUT_PREFIX_V=true node main.js
     
     - name: Test dev without prefix v
       run: |
-        test "1.0.0" = "$GIT_TAG_NO_V_NAME"
+        test "1.0.0" = "${{steps.tag_dev.outputs.tag}}"
     
     - name: Run prod
       id: tag_prod
