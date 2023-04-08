@@ -12,23 +12,19 @@ jobs:
     - name: Run dev
       id: tag_dev
       run: |
-        GITHUB_REF= node main.js && false || true
-        GITHUB_REF=origin/refs/tag/v1 node main.js && false || true
-        GITHUB_REF=refs/tag/v1 node main.js && false || true
-        GITHUB_REF=refs/heads/main node main.js && false || true
         GITHUB_REF=refs/tags/v1.0.0 node main.js
 
     - name: Test dev
       run: |
-        test "v1.0.0" = "${{steps.tag_dev.outputs.tag}}"
+        test "v1.0.0" = "${{GIT_TAG_NAME}}"
 
     - name: Run dev without prefix v
       id: tag_dev_without_prefix_v
-      run: GITHUB_REF=refs/tags/v1.0.0 INPUT_WITHOUT_PREFIX_V=true node main.js
+      run: GITHUB_REF=refs/tags/v1.0.0 INPUT_WITHOUT_PREFIX_V=true OUTPUT_ENV_NAME=GIT_TAG_NO_V_NAME node main.js
     
     - name: Test dev without prefix v
       run: |
-        test "1.0.0" = "${{steps.tag_dev_without_prefix_v.outputs.tag}}"
+        test "1.0.0" = "${{GIT_TAG_NO_V_NAME}}"
     
     - name: Run prod
       id: tag_prod
@@ -38,4 +34,4 @@ jobs:
     - name: Test prod
       if: startsWith(github.ref, 'refs/tags') == true
       run: |
-        test -n "${{steps.tag_prod.outputs.tag}}"
+        test -n "${{GIT_TAG_NAME}}"
